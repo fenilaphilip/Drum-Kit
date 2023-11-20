@@ -14,15 +14,17 @@ var audioSource = {
 document.querySelectorAll(".drum").forEach(function (button) {
   button.addEventListener("click", function (event) {
     var clickedButton = event.target.innerText;
-    console.log(clickedButton);
+
     makeSound(clickedButton);
+    buttonAnimation(clickedButton);
   });
 });
 
 document.addEventListener("keypress", function (event) {
   var clickedKey = event.key;
-  console.log(clickedKey);
+
   makeSound(clickedKey);
+  buttonAnimation(clickedKey);
 });
 
 function makeSound(Key) {
