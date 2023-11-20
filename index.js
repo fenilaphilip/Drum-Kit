@@ -3,22 +3,29 @@ console.log(totalDrumKeys);
 
 var audioSource = {
   j: "./sounds/crash.mp3",
-  k: "./sounds/kick-bass.mp3",
-  l: "./sounds/snare.mp3",
+  k: "./sounds/snare.mp3",
+  l: "./sounds/kick-bass.mp3",
   w: "./sounds/tom-1.mp3",
   a: "./sounds/tom-2.mp3",
   s: "./sounds/tom-3.mp3",
   d: "./sounds/tom-4.mp3",
 };
 
-for (var i = 0; i < totalDrumKeys; i++) {
-  console.log("inside for loop i =" + i);
-  document
-    .querySelectorAll(".drum")
-    [i].addEventListener("click", function (event) {
-      var clickedKey = event.target.innerText;
-      console.log(clickedKey);
-      var audio = new Audio(audioSource[clickedKey]);
-      audio.play();
-    });
+document.querySelectorAll(".drum").forEach(function (button) {
+  button.addEventListener("click", function (event) {
+    var clickedButton = event.target.innerText;
+    console.log(clickedButton);
+    makeSound(clickedButton);
+  });
+});
+
+document.addEventListener("keypress", function (event) {
+  var clickedKey = event.key;
+  console.log(clickedKey);
+  makeSound(clickedKey);
+});
+
+function makeSound(Key) {
+  var audio = new Audio(audioSource[Key]);
+  audio.play();
 }
