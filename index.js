@@ -29,3 +29,11 @@ function makeSound(Key) {
   var audio = new Audio(audioSource[Key]);
   audio.play();
 }
+function buttonAnimation(currentKey) {
+  var activeKey = document.querySelector("." + currentKey);
+  console.log(activeKey);
+  activeKey.classList.add("pressed");
+  setTimeout(function () {
+    activeKey.classList.remove("pressed");
+  }, 100);
+}
